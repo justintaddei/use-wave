@@ -5,7 +5,7 @@
 <h2 align="center">use-wave</h2>
 
 <p align="center">
-The material-ripple directive for Vue that actually works
+The material-ripple directive for React that actually works
 </p>
 
 ![Checks](https://github.com/justintaddei/use-wave/workflows/checks/badge.svg)
