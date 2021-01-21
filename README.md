@@ -1,30 +1,29 @@
 <p align="center">
-<img src="https://raw.githubusercontent.com/justintaddei/v-wave/assets/logo-small.png">
+<img src="https://raw.githubusercontent.com/justintaddei/use-wave/assets/logo-small.png">
 </p>
 
-<h2 align="center">v-wave</h2>
+<h2 align="center">use-wave</h2>
 
 <p align="center">
 The material-ripple directive for Vue that actually works
 </p>
 
-![Checks](https://github.com/justintaddei/v-wave/workflows/checks/badge.svg)
-![Issues](https://img.shields.io/github/issues-raw/justintaddei/v-wave.svg?style=flat)
-![Size when minified and gzipped](https://img.shields.io/badge/gzipped-121%20B-green)
-![NPM version](https://img.shields.io/npm/v/v-wave.svg?style=flat)
-![Downloads](https://img.shields.io/npm/dt/v-wave.svg?style=flat)
-![License](https://img.shields.io/npm/l/v-wave.svg?style=flat)
+![Checks](https://github.com/justintaddei/use-wave/workflows/checks/badge.svg)
+![Issues](https://img.shields.io/github/issues-raw/justintaddei/use-wave.svg?style=flat)
+![NPM version](https://img.shields.io/npm/v/use-wave.svg?style=flat)
+![Downloads](https://img.shields.io/npm/dt/use-wave.svg?style=flat)
+![License](https://img.shields.io/npm/l/use-wave.svg?style=flat)
 ![Language](https://img.shields.io/badge/language-typescript-blue.svg?style=flat)
-
-### Support for both Vue 2 and Vue 3!
 
 ## Why did I make this? 
 
-Because every ripple-plugin I've tried to use in the past either didn't work, or was missing basic features.
+Because every ripple hook/component I've tried to use in the past either didn't work, or was missing basic features.
 
-**Here's what you can expect from this plugin:**
+<sub>Also available for Vue: [v-wave](https://github.com/justintaddei/v-wave)</sub>
 
-- It works ([see for yourself](https://justintaddei.github.io/v-wave)).
+**Here's what you can expect from this hook:**
+
+- It works ([see for yourself](https://justintaddei.github.io/use-wave)).
 - The wave appears on `pointerdown` instead of `pointerup`  
   *(you might think that's an obvious choice... but you'd be wrong).*
 - There is a small delay before the ripple appears, during which the animation will be canceled if the user moves the pointer (e.g. scrolling on a mobile phone). This is similar to how native Android ripples work.
@@ -37,116 +36,58 @@ Because every ripple-plugin I've tried to use in the past either didn't work, or
 If you have a feature request or you found a bug, please open an issue!
 
 
-## [[ Live Demo ]](https://justintaddei.github.io/v-wave)
-> Source code for the demo page can be found on the [example branch.](https://github.com/justintaddei/v-wave/tree/example)
+## [[ Live Demo ]](https://justintaddei.github.io/use-wave)
+> Source code for the demo page can be found on the [example branch.](https://github.com/justintaddei/use-wave/tree/example)
 
 ## Install
 
 **npm**
 ```sh
-$ npm i v-wave
+$ npm i use-wave
 ```
 or
 
 **CDN**
 ```html
-<script src="https://unpkg.com/v-wave"></script>
-```
-
-## Register the plugin
-
-**Vue**
-```js
-// Vue 2
-
-import Vue from 'vue'
-import VWave from 'v-wave'
-
-Vue.use(VWave)
-```
-```js
-// Vue 3
-
-import {createApp} from 'vue'
-import VWave from 'v-wave'
-import App from './App.vue'
-
-createApp(App)
-  .use(VWave)
-  .mount('#app')
-```
-
-or
-
-**Nuxt**
-
-```js
-// nuxt.config.js
-
-export default {
-    modules: ['v-wave/nuxt']
-}
+<script src="https://unpkg.com/use-wave"></script>
 ```
 
 ## Usage
 
-```html
-<button v-wave>Click me!</button>
-```
+```jsx
+import useWave from 'use-wave'
 
+function MyComponent() {
+    const wave = useWave()
+
+    return <button ref={wave}>Click me!</button>
+}
+```
 
 ## Options
 
-### Usage with options
-
-#### Global options
-
-**Vue**
+#### Usage with options 
 
 ```js
-// main.js
-. . .
-
-.use(VWave, {
+useWave({
     color: 'red',
     startingOpacity: 0.5,
     easing: 'ease-in',
 })
 ```
 
-or
-
-**Nuxt**
+#### Global options
 
 ```js
-// nuxt.config.js
+// your/hooks/directory/use-custom-wave.js
 
-export default {
-    modules: ['v-wave/nuxt'],
-
-    vWave: {
-        color: 'red',
-        startingOpacity: 0.5,
-        easing: 'ease-in',
-    }
+export const useCustomWave = (overrides = {}) => {
+    const defaults = {color: 'red'} // your custom global options
+    return useWave({...defaults, ...overrides})
 }
-
 ```
 
-#### Per-directive options
-
-```html
-<button v-wave="{
-    color: 'red',
-    startingOpacity: 0.5,
-    easing: 'ease-in',
-}">
-Click me!
-</button>
-```
-
-
-### Summary
+### Options Summary
 | Name                 | Type     |     Default      |
 | -------------------- | -------- | :--------------: |
 | `color`              | `string` | `"currentColor"` |
@@ -199,30 +140,17 @@ Click me!
     **Note:**  
     The wave will not appear until after the delay, meaning a delay greater than 100ms can make the site feel sluggish.
 
----
 
-## Advanced
+## License
 
-### Changing the directive's name
+This project is distributed under the [MIT License](https://github.com/justintaddei/v-shared-element/blob/master/LICENSE.md).
 
-If you are migrating from another ripple directive you can change the name of the directive v-wave uses if you want to avoid changing it in your source code.  
-Simply pass a new name for the directive using the `directive` option:
+### The MIT License (MIT)  <!-- omit in toc -->
 
-```js
-//main.js
+Copyright (c) 2021 Justin Taddei
 
-import Vue from 'vue'
-import VWave from 'v-wave'
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-Vue.use(VWave, {
-    directive: 'ripple'
-})
-```
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-Now you can use the plugin like so:
-
-```html
-<button v-ripple>Click me!</button>
-```
-
-Keep in mind that this option can only be set globally (i.e. it cannot be set on individual directives).
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
