@@ -1,6 +1,6 @@
-import { IVWaveDirectiveOptions } from '@/options'
+import { IUseWaveOptions } from '@/options'
 
-export const createWaveElement = (x: number, y: number, size: number, options: IVWaveDirectiveOptions) => {
+export const createWaveElement = (x: number, y: number, size: number, options: IUseWaveOptions) => {
   const waveElement = document.createElement('div')
 
   waveElement.style.position = 'absolute'

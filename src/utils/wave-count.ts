@@ -1,4 +1,4 @@
-const WAVE_COUNT = 'vWaveCountInternal'
+const WAVE_COUNT = 'useWaveCountInternal'
 
 export function incrementWaveCount(el: HTMLElement) {
   const count = getWaveCount(el)

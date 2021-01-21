@@ -73,9 +73,9 @@ export default [
       {
         file: pkg.unpkg,
         format: 'iife',
-        globals: { vue: 'Vue' },
+        globals: { react: 'React' },
         extend: true,
-        name: 'window.VWave'
+        name: 'window.useWave'
       }
     ]
   }

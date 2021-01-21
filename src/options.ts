@@ -1,4 +1,4 @@
-interface IVWaveDirectiveOptions {
+interface IUseWaveOptions {
   /**
    * The `background-color` of the wave.
    *
@@ -49,28 +49,7 @@ interface IVWaveDirectiveOptions {
   cancellationPeriod: number
 }
 
-interface IVWavePluginOptions extends IVWaveDirectiveOptions {
-  /**
-   * Used to overwrite the directive's name.
-   *
-   * @remarks
-   * This can be useful if you're migrating from another ripple plugin.
-   *
-   * @example
-   * ```html
-   * <!-- If you set `directive: 'ripple'` -->
-   * <!-- You would use it like so:        -->
-   * <button v-ripple>Click here</button>`
-   * ```
-   *
-   * @default
-   * 'wave'
-   */
-  directive: string
-}
-
-const DEFAULT_PLUGIN_OPTIONS: IVWavePluginOptions = {
-  directive: 'wave',
+const DEFAULT_OPTIONS: IUseWaveOptions = {
   color: 'currentColor',
   initialOpacity: 0.2,
   finalOpacity: 0.1,
@@ -79,4 +58,4 @@ const DEFAULT_PLUGIN_OPTIONS: IVWavePluginOptions = {
   cancellationPeriod: 75
 }
 
-export { DEFAULT_PLUGIN_OPTIONS, IVWavePluginOptions, IVWaveDirectiveOptions }
+export { DEFAULT_OPTIONS, IUseWaveOptions }

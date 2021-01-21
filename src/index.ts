@@ -1,33 +1,35 @@
-import { DEFAULT_PLUGIN_OPTIONS, IVWaveDirectiveOptions, IVWavePluginOptions } from '@/options'
-import { hooks } from '@/utils/hookKeys'
-import { wave } from '@/v-wave'
-import { Plugin } from 'vue'
+import { DEFAULT_OPTIONS, IUseWaveOptions } from '@/options'
+import { wave } from '@/wave'
+import { useCallback, useRef } from 'react'
 
-const optionMap = new WeakMap<HTMLElement, Partial<IVWaveDirectiveOptions>>()
+const optionMap = new WeakMap<HTMLElement, Partial<IUseWaveOptions>>()
 
-const VWave = {
-  install(app, globalUserOptions: Partial<IVWavePluginOptions> = {}) {
-    if (this.installed) return
-    this.installed = true
-
-    const globalOptions = { ...DEFAULT_PLUGIN_OPTIONS, ...globalUserOptions }
-
-    app.directive(globalOptions.directive, {
-      [hooks.mounted](el: HTMLElement, { value }: any) {
-        optionMap.set(el, value ?? {})
-
-        el.addEventListener('pointerdown', (event) => {
-          wave(event, el, {
-            ...globalOptions,
-            ...optionMap.get(el)!
-          })
-        })
-      },
-      [hooks.updated](el: HTMLElement, { value }: any) {
-        optionMap.set(el, value ?? {})
-      }
+function onCreated(el: HTMLElement) {
+  el.addEventListener('pointerdown', (event) => {
+    wave(event, el, {
+      ...DEFAULT_OPTIONS,
+      ...optionMap.get(el)!
     })
-  }
-} as Plugin & { installed: boolean }
+  })
+}
 
-export default VWave
+function updateOptions(el: HTMLElement, options: Partial<IUseWaveOptions>) {
+  optionMap.set(el, options)
+}
+
+function useWave(options: Partial<IUseWaveOptions> = {}) {
+  const ref = useRef<HTMLElement | null>(null)
+
+  if (ref.current) updateOptions(ref.current, options)
+
+  return useCallback((el: HTMLElement) => {
+    if (!el) return
+
+    ref.current = el
+
+    updateOptions(el, options)
+    onCreated(el)
+  }, [])
+}
+
+export default useWave

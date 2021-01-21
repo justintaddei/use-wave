@@ -1,8 +1,7 @@
-import { DEFAULT_PLUGIN_OPTIONS } from '../src/options'
+import { DEFAULT_OPTIONS } from '../src/options'
 
 test('has documented default options', () => {
-  expect(DEFAULT_PLUGIN_OPTIONS).toEqual({
-    directive: 'wave',
+  expect(DEFAULT_OPTIONS).toEqual({
     color: 'currentColor',
     initialOpacity: 0.2,
     finalOpacity: 0.1,

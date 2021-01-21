@@ -1,6 +1,6 @@
 import { decrementWaveCount, deleteWaveCount, getWaveCount, incrementWaveCount } from '../../src/utils/wave-count'
 
-const WAVE_COUNT = 'vWaveCountInternal'
+const WAVE_COUNT = 'useWaveCountInternal'
 
 describe('wave-count', () => {
   test('gets correct wave count from element', () => {
