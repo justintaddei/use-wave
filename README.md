@@ -64,6 +64,26 @@ function MyComponent() {
 }
 ```
 
+It is possible to reuse a single `wave`  for multiple elements
+
+```jsx
+import useWave from 'use-wave'
+
+function List() {
+    const wave = useWave()
+    const items = ['item 1', 'item 2', 'item 2']
+
+    return (
+        <>
+            <a ref={wave} href="/">Home</a>
+            <ul>
+                {items.map(item => <li ref={wave}>{item}</li>)}
+            </ul>
+        </>
+    )
+}
+```
+
 ## Options
 
 #### Usage with options 

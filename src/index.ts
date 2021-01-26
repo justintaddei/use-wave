@@ -1,35 +1,25 @@
 import { DEFAULT_OPTIONS, IUseWaveOptions } from '@/options'
 import { wave } from '@/wave'
-import { useCallback, useRef } from 'react'
 
-const optionMap = new WeakMap<HTMLElement, Partial<IUseWaveOptions>>()
+const elementMap = new WeakMap<HTMLElement, Partial<IUseWaveOptions>>()
 
-function onCreated(el: HTMLElement) {
+function register(el: HTMLElement) {
   el.addEventListener('pointerdown', (event) => {
     wave(event, el, {
       ...DEFAULT_OPTIONS,
-      ...optionMap.get(el)!
+      ...elementMap.get(el)!
     })
   })
 }
 
-function updateOptions(el: HTMLElement, options: Partial<IUseWaveOptions>) {
-  optionMap.set(el, options)
-}
-
 function useWave(options: Partial<IUseWaveOptions> = {}) {
-  const ref = useRef<HTMLElement | null>(null)
-
-  if (ref.current) updateOptions(ref.current, options)
-
-  return useCallback((el: HTMLElement) => {
+  return (el: HTMLElement) => {
     if (!el) return
 
-    ref.current = el
+    if (!elementMap.has(el)) register(el)
 
-    updateOptions(el, options)
-    onCreated(el)
-  }, [])
+    elementMap.set(el, options)
+  }
 }
 
 export default useWave
