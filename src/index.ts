@@ -1,7 +1,7 @@
-import { DEFAULT_OPTIONS, IUseWaveOptions } from '@/options'
+import { DEFAULT_OPTIONS, IWaveOptions } from '@/options'
 import { wave } from '@/wave'
 
-const elementMap = new WeakMap<HTMLElement, Partial<IUseWaveOptions>>()
+const elementMap = new WeakMap<HTMLElement, Partial<IWaveOptions>>()
 
 function register(el: HTMLElement) {
   el.addEventListener('pointerdown', (event) => {
@@ -12,8 +12,8 @@ function register(el: HTMLElement) {
   })
 }
 
-function useWave(options: Partial<IUseWaveOptions> = {}) {
-  return (el: HTMLElement) => {
+function useWave(options: Partial<IWaveOptions> = {}) {
+  return (el: HTMLElement | null) => {
     if (!el) return
 
     if (!elementMap.has(el)) register(el)
@@ -23,3 +23,4 @@ function useWave(options: Partial<IUseWaveOptions> = {}) {
 }
 
 export default useWave
+export { IWaveOptions }

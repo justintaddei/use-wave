@@ -1,4 +1,4 @@
-interface IUseWaveOptions {
+interface IWaveOptions {
   /**
    * The `background-color` of the wave.
    *
@@ -49,7 +49,7 @@ interface IUseWaveOptions {
   cancellationPeriod: number
 }
 
-const DEFAULT_OPTIONS: IUseWaveOptions = {
+const DEFAULT_OPTIONS: IWaveOptions = {
   color: 'currentColor',
   initialOpacity: 0.2,
   finalOpacity: 0.1,
@@ -58,4 +58,4 @@ const DEFAULT_OPTIONS: IUseWaveOptions = {
   cancellationPeriod: 75
 }
 
-export { DEFAULT_OPTIONS, IUseWaveOptions }
+export { DEFAULT_OPTIONS, IWaveOptions }
