@@ -1,9 +1,9 @@
-import { IWaveOptions } from '@/options'
-import { createContainer } from '@/utils/createContainerElement'
-import { createWaveElement } from '@/utils/createWaveElement'
-import { getDistanceToFurthestCorner } from '@/utils/getDistanceToFurthestCorner'
-import { getRelativePointer } from '@/utils/getRelativePointer'
-import { decrementWaveCount, deleteWaveCount, getWaveCount, incrementWaveCount } from '@/utils/wave-count'
+import { IWaveOptions } from './options'
+import { createContainer } from './utils/createContainerElement'
+import { createWaveElement } from './utils/createWaveElement'
+import { getDistanceToFurthestCorner } from './utils/getDistanceToFurthestCorner'
+import { getRelativePointer } from './utils/getRelativePointer'
+import { decrementWaveCount, deleteWaveCount, getWaveCount, incrementWaveCount } from './utils/wave-count'
 
 const wave = (event: PointerEvent, el: HTMLElement, options: IWaveOptions) => {
   const rect = el.getBoundingClientRect()

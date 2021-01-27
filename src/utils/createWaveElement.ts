@@ -1,4 +1,4 @@
-import { IWaveOptions } from '@/options'
+import { IWaveOptions } from '../options'
 
 export const createWaveElement = (x: number, y: number, size: number, options: IWaveOptions) => {
   const waveElement = document.createElement('div')

@@ -1,5 +1,5 @@
-import { DEFAULT_OPTIONS, IWaveOptions } from '@/options'
-import { wave } from '@/wave'
+import { DEFAULT_OPTIONS, IWaveOptions } from './options'
+import { wave } from './wave'
 
 const elementMap = new WeakMap<HTMLElement, Partial<IWaveOptions>>()
 
