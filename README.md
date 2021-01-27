@@ -163,7 +163,7 @@ export const useCustomWave = (overrides = {}) => {
 
 ## License
 
-This project is distributed under the [MIT License](https://github.com/justintaddei/v-shared-element/blob/master/LICENSE.md).
+This project is distributed under the [MIT License](https://github.com/justintaddei/use-wave/blob/master/LICENSE.md).
 
 ### The MIT License (MIT)  <!-- omit in toc -->
 
