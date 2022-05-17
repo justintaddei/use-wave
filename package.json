@@ -54,7 +54,7 @@
   "homepage": "https://github.com/justintaddei/use-wave#readme",
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",
-    "@commitlint/config-conventional": "^13.1.0",
+    "@commitlint/config-conventional": "^17.0.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "@types/jest": "^26.0.20",
     "@types/react": "^17.0.0",
